@@ -7,7 +7,7 @@
     "deploy": "gh-pages -d dist"
   },
   "author": "",
-  "homepage": "https://jeremiah-blessing.github.io/portfolio",
+  "homepage": "https://jeremiahblessing.com",
   "license": "ISC",
   "dependencies": {
     "gh-pages": "^2.2.0"
