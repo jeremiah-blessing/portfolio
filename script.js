@@ -1,54 +1,102 @@
-let options = {
+var controller = new ScrollMagic.Controller();
+var sceneEcom = new ScrollMagic.Scene({
+  triggerElement: "#p-ecom",
+  duration: "100%",
+  triggerHook: 0,
+})
+  .setPin("#p-ecom")
+  .addTo(controller);
+var sceneCods = new ScrollMagic.Scene({
+  triggerElement: "#p-cosn",
+  duration: "100%",
+  triggerHook: 0,
+})
+  .setPin("#p-cosn")
+  .addTo(controller);
+var sceneRees = new ScrollMagic.Scene({
+  triggerElement: "#p-rees",
+  duration: "100%",
+  triggerHook: 0,
+})
+  .setPin("#p-rees")
+  .addTo(controller);
+
+var options = {
   rootMargin: "0px",
-  threshold: 0.2,
+  threshold: 0.3,
 };
 var callback = (entries, observer) => {
   entries.forEach((entry) => {
-    // console.log(entry.target.offsetTop);
     if (entry.isIntersecting) {
       entry.target.classList.add("ractive");
       entry.target.classList.remove("rinactive");
-      // var offset = { top: 0 };
-      // anime({
-      //   targets: offset,
-      //   top: [document.documentElement.scrollTop, entry.target.offsetTop],
-      //   easing: "easeOutElastic",
-      //   duration: 800,
-      //   update: (anim) => {
-      //     window.scroll({
-      //       top: offset.top,
-      //     });
-      //   },
-      // });
-      anime({
-        targets: ".ractive .p-name .letter",
-        translateY: [-100, 0],
-        opacity: [0, 1],
-        easing: "easeOutExpo",
-        duration: 1400,
-        delay: (el, i) => 50 * i,
-      });
+      anime
+        .timeline()
+        .add({
+          targets: ".ractive .p-name .letter",
+          translateY: [-100, 0],
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1400,
+          delay: (el, i) => 50 * i,
+        })
+        .add({
+          targets: `.${entry.target.id}`,
+          translateY: [-20, 0],
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1000,
+          delay: 950,
+        });
     } else {
       entry.target.classList.add("rinactive");
       entry.target.classList.remove("ractive");
     }
-    // Each entry describes an intersection change for one observed
-    // target element:
-    //   entry.boundingClientRect
-    //   entry.intersectionRatio
-    //   entry.intersectionRect
-    //   entry.isIntersecting
-    //   entry.rootBounds
-    //   entry.target
-    //   entry.time
   });
 };
 
-let observer = new IntersectionObserver(callback, options);
-let techStacks = document.querySelectorAll(".tech-stacks");
+var observer = new IntersectionObserver(callback, options);
+var techStacks = document.querySelectorAll(".tech-stacks");
 techStacks.forEach((techStack) => {
   observer.observe(techStack);
 });
+var contactCallback = (entries, observer) => {
+  if (entries[0].isIntersecting) {
+    anime
+      .timeline()
+      .add({
+        targets: ".contact .letter",
+        translateY: [-100, 0],
+        opacity: [0, 1],
+        easing: "easeOutExpo",
+        duration: 1400,
+        delay: (el, i) => 150 * i,
+      })
+      .add(
+        {
+          targets: ".contact-details a",
+          opacity: [0, 1],
+          translateY: [-20, 0],
+          easing: "easeOutExpo",
+          duration: 1000,
+          delay: (el, i) => 500 * i,
+        },
+        "-=400"
+      )
+      .add(
+        {
+          targets: ".goTop",
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 500,
+        },
+        "-=400"
+      );
+  }
+};
+var contactObserver = new IntersectionObserver(contactCallback, options);
+var contactDOM = document.querySelector(".contact-con");
+contactObserver.observe(contactDOM);
 
 // var textWrapper = document.querySelector('.ml16');
 // textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -61,6 +109,9 @@ pNames.forEach((pName) => {
 });
 
 window.onload = function () {
+  new Siema({ selector: ".siema-1" });
+  new Siema({ selector: ".siema-2" });
+  new Siema({ selector: ".siema-3" });
   var hhi = document.querySelector(".h-hi");
 
   hhi.innerHTML = hhi.textContent.replace(
@@ -74,6 +125,11 @@ window.onload = function () {
   );
   var ictw = document.querySelector(".h-ictw");
   ictw.innerHTML = ictw.textContent.replace(
+    /\S/g,
+    "<span class='letter'>$&</span>"
+  );
+  var contactDOMM = document.querySelector(".contact");
+  contactDOMM.innerHTML = contactDOMM.textContent.replace(
     /\S/g,
     "<span class='letter'>$&</span>"
   );
@@ -156,11 +212,11 @@ window.onload = function () {
     .add(
       {
         targets: ".pr-a",
-        translateY: [50, 0],
+        translateY: [20, 0],
         opacity: [0, 1],
         easing: "easeOutExpo",
-        duration: 1500,
+        duration: 900,
       },
-      "-=1000"
+      "-=1700"
     );
 };
