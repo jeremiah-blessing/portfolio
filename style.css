@@ -1,39 +1,116 @@
 * {
   font-family: "Montserrat", sans-serif;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
+body::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(39, 83, 115, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #275373;
+}
 
 html {
   scroll-behavior: smooth;
 }
-@media only screen and (min-width: 769px) {
-  /* .container-fluid {
-    scroll-snap-type: mandatory;
-    scroll-snap-type: y mandatory;
-    height: 100vh;
-    overflow-y: scroll;
-  }
-  .container-fluid .project {
-    scroll-snap-align: start;
-  } */
+.siema-container {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+a:hover {
+  text-decoration: none !important;
+}
+.preview-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+}
+.gts {
+  color: white;
+  border: 3px solid white;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-top: 30px;
+  font-style: italic;
+  transition: all 0.3s ease;
+}
+.gts svg {
+  fill: white;
+  vertical-align: middle;
+}
+.gts:hover {
+  background-color: white;
+  transform: skewX(-10deg);
+}
+.gts-1:hover {
+  color: #6808e8 !important;
+}
+.gts-2:hover {
+  color: #00d8ff !important;
+}
+.gts-3:hover {
+  color: #ff5aff !important;
+}
+.gts-1:hover svg {
+  fill: #6808e8;
+}
+.gts-2:hover svg {
+  fill: #00d8ff;
+}
+.gts-3:hover svg {
+  fill: #ff5aff;
+}
+.siema {
+  width: 600px;
+  height: auto;
+}
+.siema-sfm {
+  color: white;
+  font-size: 0.7rem;
+  position: absolute;
+  top: 100%;
+  right: 0%;
+}
+.siema-image {
+  width: 600px;
+  height: auto;
+  object-fit: contain;
 }
 
 .project {
   min-height: 100vh;
   scroll-snap-align: start;
 }
-.project:nth-of-type(2) {
+.p-ecom {
   background-color: #6808e8;
 }
-.project:nth-of-type(3) {
+.p-cosn {
   background-color: #00d8ff;
 }
-.project:nth-of-type(4) {
+.p-rees {
   background-color: #ff5aff;
 }
 .preview {
   width: 100%;
   padding: 20px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .tech-stacks {
   padding: 20px;
@@ -157,20 +234,10 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
   /* flex-wrap: wrap; */
 }
-.cp a {
-  text-decoration: none;
-  padding: 10px 10px;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: white;
-  font-weight: 300;
-  border: 1px solid white;
-  margin-top: 20px;
-  opacity: 0;
-}
+
 /* HERO SECTION */
 .letter {
   display: inline-block;
@@ -249,55 +316,136 @@ svg {
   overflow: hidden;
   width: 100%;
   text-align: center;
-  /* margin: 50px auto; */
+  margin-bottom: 30px;
 }
-
+a.pr-a {
+  text-decoration: none;
+  padding: 10px 10px;
+  font-size: 0.9rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  letter-spacing: 5px;
+  color: white;
+  font-weight: 600;
+  border: 2px solid white;
+  opacity: 0;
+  box-shadow: 5px 5px white;
+  transition: all 0.3s ease;
+}
+a.pr-a:hover {
+  box-shadow: 10px 10px white;
+}
+a.pr-a:focus {
+  box-shadow: 0px 0px white;
+  transform: translate(10px, 10px);
+}
 .h-ts {
   z-index: 25;
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
 .h-ts svg {
-  width: 90px;
+  width: 13%;
+  height: 90px;
+  max-height: 90px;
+  flex-grow: 1;
   margin: 20px;
   opacity: 0;
   transition: filter 0.4s ease;
-  /* filter: grayscale(100%); */
   cursor: pointer;
 }
-.h-ts svg:hover {
-  filter: grayscale(0%);
-}
+
 .contact-con {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+}
+.goTop {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  min-width: 60px;
+  min-height: 60px;
+  fill: #6808e8;
+  transition: all 0.3s ease;
+}
+
+.goTop:hover {
+  transform: translateY(-5px);
+}
+.contact-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.contact-details a {
+  margin: 15px;
 }
 .contact-mail {
-  background-color: #6808e8;
-  color: white;
+  background-color: #ffffff;
+  border: 3px solid #6808e8;
+  color: #6808e8;
   padding: 10px 20px;
   margin-top: 20px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 .contact-mail:hover {
+  color: white !important;
+  background-color: #6808e8;
   text-decoration: none;
+}
+.contact-mail svg {
+  fill: #6808e8;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.contact-mail:hover svg {
+  fill: white;
 }
 .contact {
   font-size: 8rem;
   text-transform: uppercase;
   letter-spacing: 10px;
-  font-weight: 200;
+  font-weight: 600;
   color: #6808e8;
+}
+.upwork {
+  font-weight: 600;
+  color: #6808e8;
+  text-decoration: none;
+  /* text-transform: uppercase; */
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+.upwork:hover {
+  color: #6808e8;
+}
+.upwork svg {
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 790px) {
+  .siema,
+  .siema-image {
+    width: 80vw;
+  }
 }
 @media only screen and (max-width: 576px) {
   .contact {
-    font-size: 3rem;
+    font-size: 2.7rem;
   }
   .contact-mail {
     font-size: 1rem;
@@ -334,9 +482,15 @@ svg {
   .h-ifsd {
     font-size: 0.7rem;
   }
+  .cp {
+    margin: 20px;
+  }
   .h-circle {
     width: 90vw;
     height: 90vw;
+  }
+  a.pr-a {
+    font-size: 1.5rem;
   }
 }
 .stack-details {
