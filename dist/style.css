@@ -266,6 +266,8 @@ svg {
   font-size: 3.5rem;
   font-weight: 200;
   width: 100%;
+}
+.h-ifsd .letter {
   opacity: 0;
 }
 .h-hi {
