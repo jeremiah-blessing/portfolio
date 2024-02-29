@@ -42,12 +42,6 @@ export default function Home() {
             onChange={debouncedInput}
           />
         )}
-        <Image
-          src={memoryPic}
-          alt="Sweet Memory"
-          className="mt-10 -hue-rotate-90 brightness-75"
-          priority={false}
-        />
       </div>
     </main>
   );
